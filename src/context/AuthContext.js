@@ -7,14 +7,10 @@ import {
     sendPasswordResetEmail,
     signInWithPopup,
     sendEmailVerification,
-    applyActionCode,
-    signInWithEmailLink,
-    isSignInWithEmailLink,
-    sendSignInLinkToEmail,
-    SignInMethod,
     fetchSignInMethodsForEmail,
+    GoogleAuthProvider
 } from "firebase/auth";
-import { auth, provider, faceProvider } from '../firebase'
+import { auth } from '../firebase'
 import emailjs from 'emailjs-com';
 
 const AuthContext = createContext();
@@ -74,14 +70,10 @@ const AuthProvider = ({ children }) => {
         return sendPasswordResetEmail(auth, email)
     }
 
-    const google = () => {
-        return signInWithPopup(auth, provider).then((payload) => console.log(payload))
+    const google = async () => {
+        const provider = await new GoogleAuthProvider();
+        return signInWithPopup(auth, provider);
     }
-
-    const face = () => {
-        return signInWithPopup(auth, faceProvider).then((payload) => console.log(payload))
-    }
-
 
     useEffect(() => {
         const unSub = onAuthStateChanged(auth, (user) => {
@@ -107,7 +99,7 @@ const AuthProvider = ({ children }) => {
     return <AuthContext.Provider value={{
         currentUser, signup, logOut, login,
         setVeryfied, resendeVerify, verifyBtn, setVerifyBtn,
-        resetPassword, google, face, veryfied, emailSignUp, setEmailSignUp,
+        resetPassword, google, veryfied, emailSignUp, setEmailSignUp,
         codeSignUp, codeVerify, passSignUp, setPassSignUp, checkkkk,
         canGoToverify, setCanGoToverify
     }}>
