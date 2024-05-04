@@ -4,6 +4,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import MoonLoader from "react-spinners/MoonLoader";
 import "./quiz.css"
+import logoGoogle from "../google.svg"
+
 
 const Signup = () => {
     //Please check your emails for a message with your code. Your code is 6 numbers long.
@@ -126,8 +128,9 @@ const Signup = () => {
                         </Form.Group>
 
                     </Form>
-                    <Button onClick={() => googleSignIn()} variant='secondary' type='submit' className='w-100 mt-3'>
-                        <i class="fa-brands fa-google"></i>    Continue with google
+                    <Button style={{ gap: "10px" }} onClick={() => googleSignIn()} variant='secondary' type='submit'
+                        className='w-100 mt-3 d-flex justify-content-center align-items-center'>
+                        <img src={logoGoogle} style={{ width: "25px" }} />   Continue with google
                     </Button>
                 </Card.Body>
                 <div className='w-100 text-center mt-2'>

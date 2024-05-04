@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext';
 import "./quiz.css"
+import logoGoogle from "../google.svg"
 import {
     onAuthStateChanged,
 } from "firebase/auth";
@@ -85,8 +86,9 @@ const Login = () => {
                             </Button>
                         </Form.Group>
                     </Form>
-                    <Button onClick={() => googleSignIn()} variant='secondary' type='submit' className='w-100 mt-3'>
-                        <i class="fa-brands fa-google"></i>    Continue with google
+                    <Button style={{ gap: "10px" }} onClick={() => googleSignIn()} variant='secondary' type='submit'
+                        className='w-100 mt-3 d-flex justify-content-center align-items-center'>
+                        <img src={logoGoogle} style={{ width: "25px" }} />   Continue with google
                     </Button>
                     <div className='w-100 text-center mt-3'>
                         <Link to='/forgot-password'>Forgot Passwrod</Link>
