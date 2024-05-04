@@ -19,7 +19,7 @@ function App() {
     <div className="App">
 
       <div className='w-100'>
-        <Router basename='/Quiz_app'>
+        <Router>
           <AuthProvider>
             <Routes>
               <Route path='/signup' element={<Signup />} />
