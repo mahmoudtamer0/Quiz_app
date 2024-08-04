@@ -42,6 +42,8 @@ const Products = () => {
     useEffect(() => {
         fetch("data.json").then(res => res.json())
             .then(data => setQuestions(data))
+    }, [questions])
+    useEffect(() => {
         countDownFunc(60)
     }, [])
 
